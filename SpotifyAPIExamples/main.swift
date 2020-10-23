@@ -94,8 +94,8 @@ let showURI = "spotify:show:4rOoJ6Egrf8K2IrywzwOMk"
 dispatchGroup.enter()
 spotifyAPI.showEpisodes(showURI, market: "US", limit: 50)
     // Retrive additional pages of results. In this case,
-    // a total of six pages will be retrieved.
-    .extendPages(spotifyAPI, maxExtraPages: 5)
+    // a total of three pages will be retrieved.
+    .extendPages(spotifyAPI, maxExtraPages: 2)
     .sink(
         receiveCompletion: { completion in
             print("completion:", completion, terminator: "\n\n\n")
@@ -114,6 +114,27 @@ spotifyAPI.showEpisodes(showURI, market: "US", limit: 50)
             }
             print()
 
+        }
+    )
+    .store(in: &cancellables)
+dispatchGroup.wait()
+
+// MARK: Retrieve New Album Releases
+
+dispatchGroup.enter()
+spotifyAPI.newAlbumReleases(country: "US")
+    .sink(
+        receiveCompletion: { completion in
+            print("completion:", completion, terminator: "\n\n\n")
+            dispatchGroup.leave()
+        },
+        receiveValue: { newAlbumReleases in
+            print("\nReceive New Album Rleases")
+            print("------------------------")
+            print("message:", newAlbumReleases.message ?? "nil")
+            for album in newAlbumReleases.albums.items {
+                print("\(album.name) - \(album.artists?.first?.name ?? "nil")")
+            }
         }
     )
     .store(in: &cancellables)

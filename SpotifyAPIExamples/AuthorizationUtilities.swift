@@ -22,7 +22,7 @@ extension ClientCredentialsFlowManager {
      the thread until the publisher completes. Returns early if the application
      is already authorized.
      
-     This method is defined in this app, not in the `SpotifyWebAPI` module.
+     This method is defined in *this* app, not in the `SpotifyWebAPI` module.
 
      - Throws: If `authorize()` finishes with an error.
      */
