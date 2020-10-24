@@ -57,7 +57,7 @@ dispatchGroup.wait()
 // MARK: Retrieve a Playlist
 
 // "This is Jimi Hendrix"
-// https://open.spotify.com/playlist/37i9dQZF1DWTNV753no4ic?si=c4MU5GqCSamTOIKATWVVIQ
+// https://open.spotify.com/playlist/37i9dQZF1DWTNV753no4ic
 let playlistURI = "spotify:playlist:37i9dQZF1DWTNV753no4ic"
 
 dispatchGroup.enter()
@@ -87,8 +87,8 @@ dispatchGroup.wait()
 
 // MARK: Retrieve all the Episodes in a Show
 
-// "The Joe Rogan Experience
-// https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk?si=I6Q8JgIqS2-Mifh8Ucey_g
+// "The Joe Rogan Experience"
+// https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk
 let showURI = "spotify:show:4rOoJ6Egrf8K2IrywzwOMk"
 
 dispatchGroup.enter()
@@ -134,6 +134,30 @@ spotifyAPI.newAlbumReleases(country: "US")
             print("message:", newAlbumReleases.message ?? "nil")
             for album in newAlbumReleases.albums.items {
                 print("\(album.name) - \(album.artists?.first?.name ?? "nil")")
+            }
+        }
+    )
+    .store(in: &cancellables)
+dispatchGroup.wait()
+
+// MARK: Artist Top Tracks
+
+// "Cream"
+// https://open.spotify.com/artist/74oJ4qxwOZvX6oSsu1DGnw
+let artistURI = "spotify:artist:74oJ4qxwOZvX6oSsu1DGnw"
+
+dispatchGroup.enter()
+spotifyAPI.artistTopTracks(artistURI, country: "US")
+    .sink(
+        receiveCompletion: { completion in
+            print("completion:", completion, terminator: "\n\n\n")
+            dispatchGroup.leave()
+        },
+        receiveValue: { tracks in
+            print("\nReceived top tracks for Cream:")
+            print("------------------------")
+            for track in tracks {
+                print("\(track.name) - \(track.album?.name ?? "nil")")
             }
         }
     )
