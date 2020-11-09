@@ -92,7 +92,7 @@ dispatchGroup.wait()
 let showURI = "spotify:show:4rOoJ6Egrf8K2IrywzwOMk"
 
 dispatchGroup.enter()
-spotifyAPI.showEpisodes(showURI, market: "US", limit: 50)
+spotifyAPI.showEpisodes(showURI, market: "US", limit: 10)
     // Retrive additional pages of results. In this case,
     // a total of three pages will be retrieved.
     .extendPages(spotifyAPI, maxExtraPages: 2)
@@ -103,7 +103,7 @@ spotifyAPI.showEpisodes(showURI, market: "US", limit: 50)
         },
         receiveValue: { episodes in
             
-            let currentPage = (episodes.offset / 50) + 1
+            let currentPage = (episodes.offset / 10) + 1
             if currentPage == 1 {
                 print("Received Show Episodes For The Joe Rogan Experience")
             }
