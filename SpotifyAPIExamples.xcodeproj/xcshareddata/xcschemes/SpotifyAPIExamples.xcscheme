@@ -52,12 +52,12 @@
       </BuildableProductRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable
-            key = "client_secret"
+            key = "client_id"
             value = "your client id"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "client_id"
+            key = "client_secret"
             value = "your client secret"
             isEnabled = "YES">
          </EnvironmentVariable>
