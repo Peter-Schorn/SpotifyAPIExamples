@@ -8,9 +8,6 @@ To compile and run this application, go to https://developer.spotify.com/dashboa
 
 Next, add `client_id` and `client_secret` to the [environment variables][1] for your scheme:
 
-<a href="https://ibb.co/MDYw2dS"><img src="https://i.ibb.co/pvtV0qw/Screen-Shot-2020-10-22-at-7-26-46-PM.png" alt="Screen-Shot-2020-10-22-at-7-26-46-PM" border="0"></a>
-
-
+<img src="https://i.ibb.co/W3kBh7h/Screen-Shot-2020-11-25-at-6-02-27-PM.png" alt="Screen-Shot-2020-11-25-at-6-02-27-PM" border="0">
 
 [1]: https://help.apple.com/xcode/mac/11.4/index.html?localePath=en.lproj#/dev3ec8a1cb4
-
