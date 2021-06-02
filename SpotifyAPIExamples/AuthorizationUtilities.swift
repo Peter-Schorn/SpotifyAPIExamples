@@ -6,13 +6,13 @@ import SpotifyWebAPI
 /// "client_secret" environment variables, respectively.
 /// Throws a fatal error if either can't be found.
 func getSpotifyCredentialsFromEnvironment() -> (clientId: String, clientSecret: String) {
-    guard let clientdId = ProcessInfo.processInfo.environment["client_id"] else {
-        fatalError("couldn't find 'client_id' in enviornment variables")
+    guard let clientId = ProcessInfo.processInfo.environment["client_id"] else {
+        fatalError("couldn't find 'client_id' in environment variables")
     }
     guard let clientSecret = ProcessInfo.processInfo.environment["client_secret"] else {
-        fatalError("couldn't find 'client_secret' in enviornment variables")
+        fatalError("couldn't find 'client_secret' in environment variables")
     }
-    return (clientId: clientdId, clientSecret: clientSecret)
+    return (clientId: clientId, clientSecret: clientSecret)
 }
 
 extension ClientCredentialsFlowManager {
@@ -42,7 +42,7 @@ extension ClientCredentialsFlowManager {
                 semaphore.signal()
             })
         
-        _ = cancellable  // supress warnings
+        _ = cancellable  // suppress warnings
         
         semaphore.wait()
         

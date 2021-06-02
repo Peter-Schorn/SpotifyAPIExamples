@@ -93,7 +93,7 @@ let showURI = "spotify:show:4rOoJ6Egrf8K2IrywzwOMk"
 
 dispatchGroup.enter()
 spotifyAPI.showEpisodes(showURI, market: "US", limit: 10)
-    // Retrive additional pages of results. In this case,
+    // Retrieve additional pages of results. In this case,
     // a total of three pages will be retrieved.
     .extendPages(spotifyAPI, maxExtraPages: 2)
     .sink(
