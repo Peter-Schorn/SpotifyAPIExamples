@@ -2,8 +2,8 @@ import Foundation
 import Combine
 import SpotifyWebAPI
 
-/// Retrieves the client id and client secret from the "client_id" and
-/// "client_secret" environment variables, respectively.
+/// Retrieves the client id and client secret from the "CLIENT_ID" and
+/// "CLIENT_SECRET" environment variables, respectively.
 /// Throws a fatal error if either can't be found.
 func getSpotifyCredentialsFromEnvironment() -> (clientId: String, clientSecret: String) {
     guard let clientId = ProcessInfo.processInfo.environment["CLIENT_ID"] else {
